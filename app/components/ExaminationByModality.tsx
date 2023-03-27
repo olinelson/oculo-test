@@ -25,15 +25,17 @@ export default function ExaminationByModality({ exams }: { exams: Exam[] }) {
       </section>
       <section>
         <h6>OP</h6>
-        {op.map((i) => (
-          <Image
-            key={i.thumbnail}
-            src={i.thumbnail}
-            width={150}
-            height={150}
-            alt={i.modality}
-          />
-        ))}
+        <div className="image-grid">
+          {op.map((i) => (
+            <Image
+              key={i.thumbnail}
+              src={i.thumbnail}
+              width={150}
+              height={150}
+              alt={i.modality}
+            />
+          ))}
+        </div>
       </section>
     </>
   )
