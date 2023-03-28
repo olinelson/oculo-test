@@ -4,6 +4,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 This project can be viewed at [oculo-test.vercel.app](https://oculo-test.vercel.app/)
 
+## Github
+
+This project is hosted on [Github](https://github.com/olinelson/oculo-test)
+
 ## Getting Started
 
 First, run the development server:
