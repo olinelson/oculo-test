@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ExamImageWithDate } from "../../domain/Exam"
+import { ExamImageWithDate } from "../../domain/ExamChanged"
 import Modal from "../modal/Modal"
 import styles from "./examImageModal.module.css"
 
