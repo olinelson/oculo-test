@@ -23,6 +23,7 @@ export default function Modal({ isOpen, title, children, onClose }: Props) {
       <article onClick={(e) => e.stopPropagation()}>
         <header>
           <a
+            data-testid="close"
             href="#"
             aria-label="Close"
             className={"close outline"}

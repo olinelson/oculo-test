@@ -19,7 +19,7 @@ export default function ExamImageModal({ image, onClose }: Props) {
           src={image.thumbnail}
           width={size}
           height={size}
-          alt={image.modality}
+          alt={`Eye exam image from ${image.modality} camera`}
         />
       </div>
 

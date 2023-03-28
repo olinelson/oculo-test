@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest"
   },
   "dependencies": {
     "@picocss/pico": "^1.5.7",
@@ -20,5 +21,12 @@
     "react-dom": "18.2.0",
     "typescript": "5.0.2",
     "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@vitejs/plugin-react": "^3.1.0",
+    "jsdom": "^21.1.1",
+    "vitest": "^0.29.7"
   }
 }

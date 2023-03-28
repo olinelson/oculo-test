@@ -19,7 +19,7 @@ export default function ImageWithOverlay({ onClick, image }: Props) {
         src={image.thumbnail}
         width={150}
         height={150}
-        alt={image.modality}
+        alt={`Eye exam image from ${image.modality} camera`}
       />
     </div>
   )
