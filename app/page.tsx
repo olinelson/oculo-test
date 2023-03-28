@@ -5,39 +5,28 @@ import ExaminationByDate from "./components/ExaminationByDate"
 import ExaminationByModality from "./components/ExaminationByModality"
 import { Exam } from "./domain/Exam"
 import { examinations } from "./examinations.json"
-import Container from "./components/Container"
-import styled from "styled-components"
 import Checkbox from "./components/Checkbox"
+import styles from "./page.module.css"
 
-const Header = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  h5 {
-    margin: 0;
-  }
-`
+const exams = Exam.array().parse(examinations)
 
 export default function Home() {
   const [groupByModality, setGroupByModality] = useState(false)
-  const exams = Exam.array().parse(examinations)
-
   return (
-    <Container>
-      <Header>
+    <main className="container">
+      <section className={styles.header}>
         <h5>Examinations</h5>
         <Checkbox
           isChecked={groupByModality}
           onChange={() => setGroupByModality(!groupByModality)}
           label="Group by modality"
         />
-      </Header>
-
+      </section>
       {groupByModality ? (
         <ExaminationByModality exams={exams} />
       ) : (
         <ExaminationByDate exams={exams} />
       )}
-    </Container>
+    </main>
   )
 }

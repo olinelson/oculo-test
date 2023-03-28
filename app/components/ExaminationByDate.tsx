@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Exam } from "../domain/Exam"
+import Grid from "./grid/Grid"
 
 export default function ExaminationByDate({ exams }: { exams: Exam[] }) {
   return (
@@ -7,7 +8,7 @@ export default function ExaminationByDate({ exams }: { exams: Exam[] }) {
       {exams.map((e) => (
         <section key={`by-date-${e.date.toISOString()}`}>
           <h6>{new Intl.DateTimeFormat("en-GB").format(e.date)}</h6>
-          <div className="image-grid">
+          <Grid>
             {e.images.map((i) => (
               <Image
                 key={i.thumbnail}
@@ -17,7 +18,7 @@ export default function ExaminationByDate({ exams }: { exams: Exam[] }) {
                 alt={i.modality}
               />
             ))}
-          </div>
+          </Grid>
         </section>
       ))}
     </>

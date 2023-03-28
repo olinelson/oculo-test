@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Exam, ExamImageWithDate } from "../domain/Exam"
+import Grid from "./grid/Grid"
 
 export default function ExaminationByModality({ exams }: { exams: Exam[] }) {
   const imagesWithDate: ExamImageWithDate[] = exams.flatMap((e) =>
@@ -11,7 +12,7 @@ export default function ExaminationByModality({ exams }: { exams: Exam[] }) {
     <>
       <section>
         <h6>Oct</h6>
-        <div className="image-grid">
+        <Grid>
           {oct.map((i) => (
             <Image
               key={i.thumbnail}
@@ -21,11 +22,11 @@ export default function ExaminationByModality({ exams }: { exams: Exam[] }) {
               alt={i.modality}
             />
           ))}
-        </div>
+        </Grid>
       </section>
       <section>
         <h6>OP</h6>
-        <div className="image-grid">
+        <Grid>
           {op.map((i) => (
             <Image
               key={i.thumbnail}
@@ -35,7 +36,7 @@ export default function ExaminationByModality({ exams }: { exams: Exam[] }) {
               alt={i.modality}
             />
           ))}
-        </div>
+        </Grid>
       </section>
     </>
   )
