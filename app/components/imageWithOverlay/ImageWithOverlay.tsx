@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default function ImageWithOverlay({ onClick, image }: Props) {
-  const tooltipMessage = `${image.eye === "L" ? "Left" : "Right"}, ${
+  const tooltipMessage = `${image.eye === "L" ? "Left" : "Right"} - ${
     image.modality
   }`
   return (

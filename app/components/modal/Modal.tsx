@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactNode, useCallback, useEffect } from "react"
 
 type Props = {
   isOpen: boolean
@@ -8,9 +8,19 @@ type Props = {
 }
 
 export default function Modal({ isOpen, title, children, onClose }: Props) {
+  const handleEscape = useCallback(
+    (e: KeyboardEvent) => e.key === "Escape" && onClose(),
+    [onClose]
+  )
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscape)
+    return () => document.removeEventListener("keydown", handleEscape)
+  }, [handleEscape])
+
   return (
-    <dialog open={isOpen}>
-      <article>
+    <dialog open={isOpen} onClick={onClose}>
+      <article onClick={(e) => e.stopPropagation()}>
         <header>
           <a
             href="#"

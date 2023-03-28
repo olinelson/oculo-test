@@ -1,8 +1,6 @@
-import Image from "next/image"
-import { Exam, ExamImage, ExamImageWithDate } from "../domain/Exam"
+import { Exam, ExamImageWithDate } from "../domain/Exam"
 import Grid from "./grid/Grid"
 import { useState } from "react"
-import Modal from "./modal/Modal"
 import ExamImageModal from "./examImageModal/ExamImageModal"
 import ImageWithOverlay from "./imageWithOverlay/ImageWithOverlay"
 
@@ -15,6 +13,7 @@ export default function ExaminationByDate({ exams, onClick }: Props) {
   const [selectedImage, setSelectedImage] = useState<
     ExamImageWithDate | undefined
   >(undefined)
+  const keyPrefix = "examination-by-date"
 
   const onClose = () => setSelectedImage(undefined)
   return (
@@ -23,12 +22,12 @@ export default function ExaminationByDate({ exams, onClick }: Props) {
         <ExamImageModal image={selectedImage} onClose={onClose} />
       )}
       {exams.map((e) => (
-        <section key={`by-date-${e.date.toISOString()}`}>
+        <section key={`${keyPrefix}-${e.date.toISOString()}`}>
           <h6>{new Intl.DateTimeFormat("en-GB").format(e.date)}</h6>
           <Grid>
             {e.images.map((i) => (
               <ImageWithOverlay
-                key={i.eye} //TODO
+                key={`${keyPrefix}-image-${i.thumbnail}`}
                 image={{ ...i, date: e.date }}
                 onClick={onClick}
               />
