@@ -7,18 +7,17 @@ type Props = {
   onClose: () => void
 }
 
-import styles from "./modal.module.css"
-
 export default function Modal({ isOpen, title, children, onClose }: Props) {
   return (
     <dialog open={isOpen}>
       <article>
         <header>
-          <button
+          <a
+            href="#"
             aria-label="Close"
-            className={`close outline ${styles.button}`}
+            className={`close outline`}
             onClick={onClose}
-          ></button>
+          ></a>
           {title}
         </header>
         {children}

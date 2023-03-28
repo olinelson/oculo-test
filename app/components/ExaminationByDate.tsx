@@ -3,10 +3,15 @@ import { Exam, ExamImage, ExamImageWithDate } from "../domain/Exam"
 import Grid from "./grid/Grid"
 import { useState } from "react"
 import Modal from "./modal/Modal"
-import ExamImageModal from "./ExamImageModal"
+import ExamImageModal from "./examImageModal/ExamImageModal"
 import ImageWithOverlay from "./imageWithOverlay/ImageWithOverlay"
 
-export default function ExaminationByDate({ exams }: { exams: Exam[] }) {
+type Props = {
+  exams: Exam[]
+  onClick: (i: ExamImageWithDate) => void
+}
+
+export default function ExaminationByDate({ exams, onClick }: Props) {
   const [selectedImage, setSelectedImage] = useState<
     ExamImageWithDate | undefined
   >(undefined)
@@ -24,8 +29,8 @@ export default function ExaminationByDate({ exams }: { exams: Exam[] }) {
             {e.images.map((i) => (
               <ImageWithOverlay
                 key={i.eye} //TODO
-                image={i}
-                onClick={() => setSelectedImage(i)}
+                image={{ ...i, date: e.date }}
+                onClick={onClick}
               />
             ))}
           </Grid>

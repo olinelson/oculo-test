@@ -1,22 +1,18 @@
 import Image from "next/image"
-import { ExamImage } from "../../domain/Exam"
+import { ExamImage, ExamImageWithDate } from "../../domain/Exam"
 import styles from "./imageWithOverlay.module.css"
 
 type Props = {
-  image: ExamImage
-  onClick: (i: ExamImage) => void
+  image: ExamImageWithDate
+  onClick: (i: ExamImageWithDate) => void
 }
 
 export default function ImageWithOverlay({ onClick, image }: Props) {
+  const tooltipMessage = `${image.eye === "L" ? "Left" : "Right"}, ${
+    image.modality
+  }`
   return (
-    <div className={styles.overlay}>
-      <small
-        data-tooltip={`${image.eye === "L" ? "Left" : "Right"}, ${
-          image.modality
-        }`}
-      >
-        i
-      </small>
+    <div className={styles.overlay} data-tooltip={tooltipMessage}>
       <Image
         onClick={() => onClick(image)}
         key={image.thumbnail}

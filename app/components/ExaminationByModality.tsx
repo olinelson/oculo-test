@@ -1,46 +1,48 @@
 import Image from "next/image"
-import { Exam, ExamImageWithDate } from "../domain/Exam"
+import { Exam, ExamImageWithDate, Modality } from "../domain/Exam"
 import Grid from "./grid/Grid"
+import ImageWithOverlay from "./imageWithOverlay/ImageWithOverlay"
 
-export default function ExaminationByModality({ exams }: { exams: Exam[] }) {
-  const imagesWithDate: ExamImageWithDate[] = exams.flatMap((e) =>
-    e.images.map((i) => ({ date: e.date, ...i }))
-  )
-  const oct = imagesWithDate
-    .filter((i) => i.modality === "OCT")
-    .sort((a, b) => (a < b ? 1 : -1))
-  const op = imagesWithDate
-    .filter((i) => i.modality === "OP")
-    .sort((a, b) => (a < b ? 1 : -1))
+type Props = {
+  exams: Exam[]
+  onClick: (i: ExamImageWithDate) => void
+}
+
+function flattenImages(exams: Exam[]): ExamImageWithDate[] {
+  return exams.flatMap((e) => e.images.map((i) => ({ date: e.date, ...i })))
+}
+
+function groupByModality(exams: Exam[]) {
+  const images = flattenImages(exams)
+  const map = new Map<Modality, ExamImageWithDate[]>()
+  for (const i of images) {
+    const modArray = map.get(i.modality)
+    if (modArray) modArray.push(i)
+    else map.set(i.modality, [i])
+  }
+  return Array.from(map)
+}
+
+export default function ExaminationByModality({ exams, onClick }: Props) {
+  const byModality = groupByModality(exams)
+
   return (
     <>
       <section>
-        <h6>Oct</h6>
-        <Grid>
-          {oct.map((i) => (
-            <Image
-              key={i.thumbnail}
-              src={i.thumbnail}
-              width={150}
-              height={150}
-              alt={i.modality}
-            />
-          ))}
-        </Grid>
-      </section>
-      <section>
-        <h6>OP</h6>
-        <Grid>
-          {op.map((i) => (
-            <Image
-              key={i.thumbnail}
-              src={i.thumbnail}
-              width={150}
-              height={150}
-              alt={i.modality}
-            />
-          ))}
-        </Grid>
+        {byModality.map(([modality, images]) => (
+          <section key={modality}>
+            <h6>{modality}</h6>
+            <Grid>
+              {images.map((i) => (
+                <ImageWithOverlay
+                  key={i.thumbnail}
+                  image={i}
+                  onClick={() => onClick(i)}
+                />
+              ))}
+            </Grid>
+          </section>
+        ))}
       </section>
     </>
   )
