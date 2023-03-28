@@ -1,4 +1,4 @@
-import { Exam, ExamImageWithDate } from "../domain/ExamChanged"
+import { Exam, ExamImageWithDate } from "../domain/exam"
 import { groupByModality } from "../domain/utils"
 import Grid from "./grid/Grid"
 import ImageWithOverlay from "./imageWithOverlay/ImageWithOverlay"

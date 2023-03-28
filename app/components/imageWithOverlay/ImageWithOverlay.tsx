@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ExamImageWithDate } from "../../domain/ExamChanged"
+import { ExamImageWithDate } from "../../domain/exam"
 import styles from "./imageWithOverlay.module.css"
 
 type Props = {

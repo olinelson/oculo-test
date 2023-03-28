@@ -1,4 +1,4 @@
-import { Exam, ExamImageWithDate } from "../domain/ExamChanged"
+import { Exam, ExamImageWithDate } from "../domain/exam"
 import Grid from "./grid/Grid"
 import { useState } from "react"
 import ExamImageModal from "./examImageModal/ExamImageModal"

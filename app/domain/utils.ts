@@ -1,4 +1,4 @@
-import { Exam, ExamImageWithDate, Modality } from "./ExamChanged"
+import { Exam, ExamImageWithDate, Modality } from "./exam"
 
 export function flattenImages(exams: Exam[]): ExamImageWithDate[] {
   return exams.flatMap((e) => e.images.map((i) => ({ date: e.date, ...i })))

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import ExaminationByDate from "./components/ExaminationByDate"
 import ExaminationByModality from "./components/ExaminationByModality"
-import { Exam, ExamImageWithDate } from "./domain/ExamChanged"
+import { Exam, ExamImageWithDate } from "./domain/exam"
 import { examinations } from "./examinations.json"
 import Checkbox from "./components/Checkbox"
 import styles from "./page.module.css"
