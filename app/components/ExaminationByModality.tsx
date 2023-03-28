@@ -6,8 +6,12 @@ export default function ExaminationByModality({ exams }: { exams: Exam[] }) {
   const imagesWithDate: ExamImageWithDate[] = exams.flatMap((e) =>
     e.images.map((i) => ({ date: e.date, ...i }))
   )
-  const oct = imagesWithDate.filter((i) => i.modality === "OCT")
-  const op = imagesWithDate.filter((i) => i.modality === "OP")
+  const oct = imagesWithDate
+    .filter((i) => i.modality === "OCT")
+    .sort((a, b) => (a < b ? 1 : -1))
+  const op = imagesWithDate
+    .filter((i) => i.modality === "OP")
+    .sort((a, b) => (a < b ? 1 : -1))
   return (
     <>
       <section>
