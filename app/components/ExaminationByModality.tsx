@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { Exam, ExamImageWithDate, Modality } from "../domain/Exam"
 import Grid from "./grid/Grid"
 import ImageWithOverlay from "./imageWithOverlay/ImageWithOverlay"
@@ -27,23 +26,21 @@ export default function ExaminationByModality({ exams, onClick }: Props) {
   const byModality = groupByModality(exams)
 
   return (
-    <>
-      <section>
-        {byModality.map(([modality, images]) => (
-          <section key={modality}>
-            <h6>{modality}</h6>
-            <Grid>
-              {images.map((i) => (
-                <ImageWithOverlay
-                  key={i.thumbnail}
-                  image={i}
-                  onClick={() => onClick(i)}
-                />
-              ))}
-            </Grid>
-          </section>
-        ))}
-      </section>
-    </>
+    <section>
+      {byModality.map(([modality, images]) => (
+        <section key={modality}>
+          <h6>{modality}</h6>
+          <Grid>
+            {images.map((i) => (
+              <ImageWithOverlay
+                key={i.thumbnail}
+                image={i}
+                onClick={() => onClick(i)}
+              />
+            ))}
+          </Grid>
+        </section>
+      ))}
+    </section>
   )
 }

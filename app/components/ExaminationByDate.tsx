@@ -14,7 +14,6 @@ export default function ExaminationByDate({ exams, onClick }: Props) {
     ExamImageWithDate | undefined
   >(undefined)
   const keyPrefix = "examination-by-date"
-
   const onClose = () => setSelectedImage(undefined)
   return (
     <>

@@ -25,7 +25,7 @@ export default function Modal({ isOpen, title, children, onClose }: Props) {
           <a
             href="#"
             aria-label="Close"
-            className={`close outline`}
+            className={"close outline"}
             onClick={onClose}
           ></a>
           {title}
