@@ -13,7 +13,11 @@ export default function ExamImageModal({ image, onClose }: Props) {
   const prettyEye = image.eye === "L" ? "Left" : "Right"
   const size = 500
   return (
-    <Modal title={`${prettyDate} - ${prettyEye} eye`} isOpen onClose={onClose}>
+    <Modal
+      title={`${prettyDate} - ${image.modality} of ${prettyEye} eye`}
+      isOpen
+      onClose={onClose}
+    >
       <div>
         <Image
           src={image.thumbnail}
