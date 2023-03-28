@@ -1,16 +1,16 @@
 .overlay {
-    position: relative;
-    cursor:pointer !important;
-    border: none !important;
+  position: relative;
+  cursor: pointer !important;
+  border: none !important;
 }
 
 .overlay:hover {
-    transform: scale(1.03);
-  }
+  transform: scale(1.03);
+}
 
 .overlay > small {
-    position: absolute;
-    top: .25rem;
-    left: .25rem;
-    border: none;
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  border: none;
 }

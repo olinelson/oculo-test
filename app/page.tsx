@@ -27,7 +27,6 @@ export default function Home() {
           onClose={() => setSelectedImage(undefined)}
         />
       )}
-
       <main className="container">
         <section className={styles.header}>
           <h5>Examinations</h5>
