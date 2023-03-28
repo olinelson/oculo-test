@@ -18,14 +18,12 @@ export default function ExamImageModal({ image, onClose }: Props) {
       isOpen
       onClose={onClose}
     >
-      <div>
-        <Image
-          src={image.thumbnail}
-          width={size}
-          height={size}
-          alt={`Eye exam image from ${image.modality} camera`}
-        />
-      </div>
+      <Image
+        src={image.thumbnail}
+        width={size}
+        height={size}
+        alt={`Eye exam image from ${image.modality} camera`}
+      />
 
       <footer className={styles.footer}>
         <hgroup className={styles.notes}>
